@@ -36,8 +36,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.14046478, y: 0.0041503906}
-  m_SizeDelta: {x: 100.23, y: 100}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1896609284628537520
 CanvasRenderer:
@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightPrefab: {fileID: 2284921849876417248, guid: 34212d7c2a054b649a1d5563aad0ad11, type: 3}
+  highlight: {fileID: 2284921849876417248, guid: 34212d7c2a054b649a1d5563aad0ad11, type: 3}
   x: 0
   y: 0
   type: {fileID: 0}

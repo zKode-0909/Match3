@@ -12,6 +12,8 @@ public class Score : MonoBehaviour
     {
         
         currentScore = 0;
+
+
     }
 
     public void IncreaseScore(int score)
@@ -28,6 +30,10 @@ public class Score : MonoBehaviour
             gameScoreChannel.Invoke(currentScore);
         }
     }*/
+
+    public void ResetScore() {
+        currentScore = 0;
+    }
 
     
 

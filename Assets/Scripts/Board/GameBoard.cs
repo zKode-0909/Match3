@@ -4,13 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using UnityEngine.EventSystems;
-using UnityEditorInternal;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Drawing;
 using DG.Tweening;
-using Unity.PlasticSCM.Editor.WebApi;
-using UnityEditor.UIElements;
 using System.Collections;
 
 
@@ -25,9 +22,11 @@ public class GameBoard : MonoBehaviour
     [SerializeField] GameObject panel;
     [SerializeField] InputReader inputReader;
     [SerializeField] GraphicCaster caster;
-    [SerializeField] GameManager gameManager;
-    //[SerializeField] Score score;
-    //[SerializeField] Lives lives;
+    //[SerializeField] GameManager gameManager;
+   // GameManager gameManager;
+    [SerializeField] Score score;
+    [SerializeField] Lives lives;
+    [SerializeField] HighScores highScores;
     private GridLayoutGroup grid;
     GridSlot[,] gridSlots;
     private GridSlot prevSelection;
@@ -42,7 +41,7 @@ public class GameBoard : MonoBehaviour
     Vector2 boardDimensions;
     bool performAction = false;
     bool gameOver = false;
-
+   
 
     Vector2 boardOffset;
 
@@ -50,11 +49,25 @@ public class GameBoard : MonoBehaviour
     private void OnEnable()
     {
         gameOver = false;
+        inputReader.ClickEvent += HandleClick;
+
+    }
+
+    private void OnDisable()
+    {
+        inputReader.ClickEvent -= HandleClick;
+    }
+
+    private void OnDestroy()
+    {
+        inputReader.ClickEvent -= HandleClick;
     }
 
     private void Start()
     {
-        
+
+        //gameManager = new GameManager()
+        gameOver = false;
         stateMachine = new StateMachine();
         boardWidth = padding.left + padding.right +
              cols * cellSize.x + (cols - 1) * cellSpacing.x;
@@ -67,7 +80,7 @@ public class GameBoard : MonoBehaviour
         //prevSelection = new GridSlot().Init();
         gridSlots = new GridSlot[cols, rows];
         grid = panel.GetComponent<GridLayoutGroup>();
-        inputReader.ClickEvent += HandleClick;
+        
 
         /*
         var idleState = new IdleState(this);
@@ -114,8 +127,8 @@ public class GameBoard : MonoBehaviour
 
     public void HandleClick()
     {
-        if (gameOver == true) {
-            Debug.Log("This game is over pal");
+        if (lives.livesLeft <= 0) {
+            Debug.Log($"This game is over pal, game over- lives left is {lives.livesLeft}");
             return;
         }
 
@@ -126,9 +139,15 @@ public class GameBoard : MonoBehaviour
   
 
         if (results.Count == 0) {
-            prevSelection = null;
-            currSelection = null;
-            //Debug.Log("None selected");
+            //prevSelection = null;
+            if (currSelection != null) {
+                currSelection.HideHighlight();
+                currSelection = null;
+                prevSelection = null;
+                
+            }
+            
+            Debug.Log("None selected");
             return;
         }
 
@@ -137,14 +156,20 @@ public class GameBoard : MonoBehaviour
             prevSelection = currSelection;
             //Debug.Log($"results i: {results[i]}");
             currSelection = results[i].gameObject.GetComponent<GridSlot>();
+
+            currSelection.ShowHighlightAt(new Vector2(currSelection.x, currSelection.y), padding.right, cellSize);
+            
+            
            // currSelection.ShowHighlightAt(PositionFromXY_TopLeft(currSelection.x, currSelection.y), 0, cellSize);
             if (currSelection != null) {
                 currSelection.type.OnLeftClick(currSelection.x, currSelection.y);
                 //Debug.Log($"currSelected: {currSelection.x},{currSelection.y}");
             }
 
-            if (prevSelection != null) {
+            if (prevSelection != null && currSelection == null) {
+               
                 //Debug.Log($"prev selected: {prevSelection.x},{prevSelection.y}");
+                
             }
             
             if (prevSelection == null && currSelection == null) {
@@ -163,10 +188,12 @@ public class GameBoard : MonoBehaviour
             //Debug.Log($"switch with previous selection {prevSelection.x},{prevSelection.y}    currentSelection {currSelection.x},{currSelection.y}");
             //performAction = true;
             //stateMachine.SetState(new BoardActionState(this));
+            currSelection.HideHighlight();
+            prevSelection.HideHighlight();
             bool found = true;
             SwapElts(prevSelection, currSelection);
             StartCoroutine(ResolveBoardRoutine());
-           
+
             /*
             while (found == true) {
                 
@@ -206,14 +233,26 @@ public class GameBoard : MonoBehaviour
             currSelection = null;
             prevSelection = null;
             //performAction = false;
-            gameManager.SpendLife();
+            // gameManager.SpendLife();
+            lives.RemoveLife();
 
         }
-        else if (prevSelection != null && currSelection != null && prevSelection != currSelection && !IsAdjacent(prevSelection.x, prevSelection.y, currSelection.x, currSelection.y)) {
-           // Debug.Log($"Not adjacent! keeping {prevSelection.x},{prevSelection.y} selected");
-            currSelection = prevSelection;
+        else if (prevSelection != null && currSelection != null && prevSelection != currSelection && !IsAdjacent(prevSelection.x, prevSelection.y, currSelection.x, currSelection.y))
+        {
+            // Debug.Log($"Not adjacent! keeping {prevSelection.x},{prevSelection.y} selected");
+            prevSelection.HideHighlight();
+            //currSelection = prevSelection;
             prevSelection = null;
         }
+        else if (prevSelection != null && currSelection == null) {
+            Debug.Log($"herheehrerehr0");
+            prevSelection.HideHighlight();
+            prevSelection = null;
+        }
+
+        
+
+       
         
 
     }
@@ -234,7 +273,8 @@ public class GameBoard : MonoBehaviour
             foreach (var p in matchesFound)
             {
                 if (gridSlots[p.x, p.y] == null) continue;
-                gameManager.AddScore(gridSlots[p.x, p.y].type.score);
+                //gameManager.AddScore(gridSlots[p.x, p.y].type.score);
+                score.IncreaseScore(gridSlots[p.x, p.y].type.score);
                 gridSlots[p.x, p.y].type.OnDestroy();
                 Destroy(gridSlots[p.x, p.y].gameObject);
                 gridSlots[p.x, p.y] = null;
@@ -464,8 +504,10 @@ public class GameBoard : MonoBehaviour
 
     private void Update()
     {
-        if (gameManager.GetLives() <= 0) { 
+       // Debug.Log($"lives left = {lives.livesLeft} gameOver status: {gameOver} instanceID: {GetInstanceID()}");
+        if (lives.livesLeft <= 0) { 
             gameOver = true;
+            highScores.TryInsertScore(score.currentScore);
         }
         //Debug.Log($"curr {currSelection}  prev {prevSelection}");
        // stateMachine.Update();
@@ -614,7 +656,10 @@ public class GameBoard : MonoBehaviour
         slot.Init(option, x, y);
         var rt = slot.GetComponent<RectTransform>();
         rt.anchoredPosition = PositionFromXY_TopLeft(x, y);
+
+        
         rt.sizeDelta = new Vector2(cellSize.x, cellSize.y);
+
 
         return slot;
     }

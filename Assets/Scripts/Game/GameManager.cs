@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
+    public GameManager Instance { get; private set; }
     [SerializeField] Score score;
     [SerializeField] Lives lives;
     [SerializeField] Canvas gameBoardCanvas;
@@ -22,10 +22,25 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        score.ResetScore();
+        Debug.Log($"lives before bullshit:{lives.livesLeft}");
+        
+        lives.SetLives(20);
+        Debug.Log($"lives after bullshit: {lives.livesLeft}");
+
+        //DontDestroyOnLoad(gameObject);
+
         //gameBoardCanvas.gameObject.SetActive(false);
         //gameBoard.gameObject.SetActive(false);
         //mainMenuCanvas.gameObject.SetActive(true);
 
+
+    }
+
+    private void OnDestroy()
+    {
+        Debug.Log("destroying instance");
+        if (Instance == this) Instance = null;
     }
 
     public void AddScore(int scoreFromElt)
@@ -49,4 +64,6 @@ public class GameManager : MonoBehaviour
             GameOverScreen.SetActive(true);
         }
     }
+
+ 
 }

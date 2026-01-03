@@ -8,8 +8,15 @@ public class Lives : MonoBehaviour
 
     private void Awake()
     {
-        livesLeft = 20;
+       // livesLeft = 20;
+
+
     }
+    /*
+    private void Start()
+    {
+        livesLeft = 5;
+    }*/
 
     public void RemoveLife() { 
         livesLeft--;
@@ -19,8 +26,13 @@ public class Lives : MonoBehaviour
         return livesLeft;
     }
 
+    public void SetLives(int lives)
+    {
+        livesLeft = lives;
+    }
+
     private void Update()
     {
-        livesText.text = livesLeft.ToString();
+        livesText.text = $"Lives left: {livesLeft}";
     }
 }

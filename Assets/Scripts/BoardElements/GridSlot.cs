@@ -22,6 +22,7 @@ public class GridSlot : MonoBehaviour
         //Debug.Log($"image sprite: {gameObject.GetComponent<Image>().sprite}");
         gameObject.GetComponent<Image>().sprite = type.sprite;
         gameObject.name = $"{x},{y}";
+        
     }
 
     
@@ -35,8 +36,9 @@ public class GridSlot : MonoBehaviour
 
     public void ShowHighlightAt(Vector2 pos, float paddingPx,Vector2 cellSize)
     {
+        pos.x -= 10;
         EnsureHighlight();
-
+        Debug.Log($"showing highlight at: {pos}");
         highlight.gameObject.SetActive(true);
 
         // position highlight to cell center
@@ -44,8 +46,8 @@ public class GridSlot : MonoBehaviour
 
         // size it to cell size (+ optional padding)
         highlight.sizeDelta = new Vector2(
-        cellSize.x + paddingPx * 2f,
-            cellSize.y + paddingPx * 2f
+        (cellSize.x) + 25,
+            (cellSize.y) + 25 
         );
 
         // ensure it renders on top
@@ -59,6 +61,7 @@ public class GridSlot : MonoBehaviour
 
     public void HandleLeftClick() {
         type.OnLeftClick(x,y);
+
 
     }
 
