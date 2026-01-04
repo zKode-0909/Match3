@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 1c2317f83c00a4dc1a253304e588819a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 207314
+  packageName: Sprite Breaker
+  packageVersion: 1.1
+  assetPath: Assets/Sprite Breaker/Geometry/PolyBoolCS/Types.cs
+  uploadId: 474751

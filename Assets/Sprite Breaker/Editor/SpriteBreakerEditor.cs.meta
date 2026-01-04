@@ -1,0 +1,36 @@
+fileFormatVersion: 2
+guid: 30f291146339d4b3f8d6b580a76fd63f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - m_ViewDataDictionary: {instanceID: 0}
+  - pivotIcon: {fileID: 2800000, guid: 8547db8c7ec094bf2a5ba975ae18589e, type: 3}
+  - pointIcon: {fileID: 2800000, guid: 7b9b98ab9a34d4c3384b142596aa14ba, type: 3}
+  - selectedPointIcon: {fileID: 2800000, guid: a23e20f60726846ab8187fbc2063384c, type: 3}
+  - solidTexture: {fileID: 2800000, guid: d8ed735c5ac7a444d8ac3d2c4841cda4, type: 3}
+  - checkerTexture: {fileID: 10309, guid: 0000000000000000f000000000000000, type: 0}
+  - modeCreate: {fileID: 2800000, guid: 34292a6b6b41c4b75b2744328cd705cf, type: 3}
+  - modeEdit: {fileID: 2800000, guid: 8015d2768d60d4ac58a9cc436ff1ef8f, type: 3}
+  - modeCut: {fileID: 2800000, guid: 481908b8c6a7746ed9e0f4abf371a48b, type: 3}
+  - editMove: {fileID: 2800000, guid: a1c6b496195f04c3c8d82e184acb1a68, type: 3}
+  - editRotate: {fileID: 2800000, guid: 1ba930c1d84f347ee936d0ae982379c0, type: 3}
+  - editScale: {fileID: 2800000, guid: b6890acf78dbd4551985b2a93f7f7640, type: 3}
+  - editFlipX: {fileID: 2800000, guid: e055e531ff3c942c69ba3ad87960f56c, type: 3}
+  - editFlipY: {fileID: 2800000, guid: 68905b4d5601e4e15869fbc411d44ab2, type: 3}
+  - editUnion: {fileID: 2800000, guid: dde40fa1017904e8ca22ec70046a2e27, type: 3}
+  - editSubtract: {fileID: 2800000, guid: 99051f016160e47acb86873828d8c46e, type: 3}
+  - editIntersect: {fileID: 2800000, guid: 97773f3ecc4bd45f98975c8795f62e43, type: 3}
+  - editReset: {fileID: 2800000, guid: a91dcc1e97eaf41dfab266ba24cd8028, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 207314
+  packageName: Sprite Breaker
+  packageVersion: 1.1
+  assetPath: Assets/Sprite Breaker/Editor/SpriteBreakerEditor.cs
+  uploadId: 474751

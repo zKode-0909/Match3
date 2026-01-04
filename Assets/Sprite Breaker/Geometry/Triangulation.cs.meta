@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: a78fb95b758004930bc6358a8f554b36
+timeCreated: 1465912497
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 207314
+  packageName: Sprite Breaker
+  packageVersion: 1.1
+  assetPath: Assets/Sprite Breaker/Geometry/Triangulation.cs
+  uploadId: 474751

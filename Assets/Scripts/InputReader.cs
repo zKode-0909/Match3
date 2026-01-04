@@ -122,7 +122,7 @@ public class InputReader : ScriptableObject, IPlayerActions, IUIActions
 
     public void OnScroll(InputAction.CallbackContext context)
     {
-        throw new NotImplementedException();
+        Debug.Log("Scrolling");
     }
 
     public void OnJump(InputAction.CallbackContext context)

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: ea0bc208cea974265aa2a5342106914b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 207314
+  packageName: Sprite Breaker
+  packageVersion: 1.1
+  assetPath: Assets/Sprite Breaker/Geometry/PolyBoolCS/SegmentChainer.cs
+  uploadId: 474751

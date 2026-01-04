@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: fa424cb825a71428fb03a9ab3b1afdd4
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 207314
+  packageName: Sprite Breaker
+  packageVersion: 1.1
+  assetPath: Assets/Sprite Breaker/Geometry/ConvexHull.cs
+  uploadId: 474751

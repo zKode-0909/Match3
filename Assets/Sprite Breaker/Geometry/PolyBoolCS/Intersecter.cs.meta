@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 0af0e12a0ec524f34a589ef248bd1fb4
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 207314
+  packageName: Sprite Breaker
+  packageVersion: 1.1
+  assetPath: Assets/Sprite Breaker/Geometry/PolyBoolCS/Intersecter.cs
+  uploadId: 474751

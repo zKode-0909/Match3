@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: d8cdaeefe5d5a4e19a1bf3ffacdad9b4
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 207314
+  packageName: Sprite Breaker
+  packageVersion: 1.1
+  assetPath: Assets/Sprite Breaker/Samples/4/Sample4CustomShard.cs
+  uploadId: 474751

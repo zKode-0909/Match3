@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: b96b5d5eb1c0e47b297cf9402fa76c38
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 207314
+  packageName: Sprite Breaker
+  packageVersion: 1.1
+  assetPath: Assets/Sprite Breaker/SpriteBreakerDataAsset.cs
+  uploadId: 474751
